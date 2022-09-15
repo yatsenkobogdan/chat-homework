@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link href='./public/output.css' rel='stylesheet'>
+  <!-- <script src='https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js'></script> -->
+  <title>Websocket chat</title>
+  
+</head>
+<body>
+  <div id='mainContainer'>
+    <div class='fixed p-0 m-0 insert-0 w-full h-full bg-body flex justify-center hidden' id='login'>
+      <div class='w-96 text-center flex flex-col justify-center'>
+        <div class='m-3 rounded-full h-28 w-28 flex items-center justify-center self-center bg-custom-light-gray'>
+          <img src='../public/Vector.png'>
+        </div>
+        <div class='text-2xl font-medium leading-7 text-white mt-7'>
+          Авторизация
+        </div>
+        <div class='text-custom-gray text-base text-normal mt-3'>
+          Введите пожалуйста свой ник для дальнейшей авторизации
+        </div>
+        <input placeholder='Введите свой ник' class='text-white p-1 w-full mt-9 border-b-2 border-gray-400 bg-transparent' id='loginUserName'>
+        <button class='text-white text-sm font-medium bg-custom-blue w-32 h-11 mt-11 rounded-md self-center' id='loginSubmitButton'>
+          ВОЙТИ
+        </button>
+        <div id='loginErrorsContainer' class='text-white text-sm font-medium hidden bg-red-500 mt-11'>
+          Проверьте правильность ввода данных и попробуйте снова
+        </div>
+      </div>
+    </div>
+  
+    <div class='flex flex-start fixed p-0 m-0 insert-0 w-full h-full bg-chat hidden text-white' id='chat'>
+      <div class='flex flex-col h-full w-2/6 bg-body'>
+        <div class='p-3 pl-4 mt-3 cursor-pointer' id='menu'>
+          <img src='../public/images/menu.png' alt='menu'>
+        </div>
+        <div class='flex flex-row p-3 space-x-4 mt-3'>
+          <div id='userPhoto' class='w-14 h-14 rounded-full bg-cover'>
+            <!-- <img src='../public/images/blankAvatar.png' alt='avatar' class='h-14 w-14 rounded-full'> -->
+          </div>
+          <div class='flex' id='userName'></div>
+        </div>
+        <div class='flex flex-col' id='userList'></div>
+      </div>
+      <div class='flex flex-col h-full w-full ml-0.5'>
+        <div class='flex flex-col h-20 bg-body pt-2 pl-4'>
+          <div class='flex'>
+            Чат
+          </div>
+          <div class='flex text-custom-gray' id='usersCount'></div>
+        </div>
+        <div class='flex flex-col h-full p-3' id='messageList'></div>
+        <div class='flex flex-row h-20 bg-body justify-between p-4'>
+          <input placeholder='Введите сообщение...' class='bg-transparent w-full h-full outline-0' id='chatInput'>
+          <button class='text-white text-sm font-medium bg-custom-blue rounded-md w-36' id='chatButton'>Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
