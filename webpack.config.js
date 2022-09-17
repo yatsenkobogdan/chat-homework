@@ -23,7 +23,7 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg)$/i, 
         loader: 'url-loader',
         options: {
-          limit: false,
+          limit: 10000,
         }
     },
     {
@@ -33,7 +33,9 @@ module.exports = {
     ],
   },
   devServer: {
-    static: 'public'
+    webSocketServer: false,
+    hot: false,
+    liveReload: false
   },
   plugins: [
     new HTMLPlugin({

@@ -11,7 +11,8 @@ export default class messageList{
 
     container.innerHTML = `
     <div class='flex flex-row p-3'>
-      <div data-photo='avatar' data-user=${messageAuthor}>
+      <div class='flex h-14 w-14 rounded-full'>
+        <img src='http://localhost:3000/photos/${messageAuthor}.png' class='h-14 w-14 rounded-full user-${messageAuthor}'>
       </div>
       <div class='flex flex-col ml-2'>
         <div class='flex text-base text-nickname'>

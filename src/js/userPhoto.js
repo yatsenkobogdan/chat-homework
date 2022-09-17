@@ -9,12 +9,13 @@ export default class userPhoto{
       }
     })
     this.element.addEventListener('drop', (e) => {
+      e.preventDefault()
+
       const file = e.dataTransfer.items[0].getAsFile()
       const fileReader = new FileReader()
 
       fileReader.readAsDataURL(file)
       fileReader.addEventListener('load', () => this.loadHandler(fileReader.result))
-      e.preventDefault()
     })
   }
 

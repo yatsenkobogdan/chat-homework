@@ -22,7 +22,7 @@ export default class userList{
       element.innerHTML = `
         <div class='flex flex-row p-3 space-x-4'>
           <div class='flex'>
-            <img src='../public/images/blankAvatar.png' alt='avatar' class='h-14 w-14 rounded-full'>
+            <img src='http://localhost:3000/photos/${name}.png' class='h-14 w-14 rounded-full user-${name}'>
           </div>
           <div class='flex text-nickname'>
             ${name}

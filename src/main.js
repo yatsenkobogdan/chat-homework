@@ -76,11 +76,12 @@ export default class mainObject{
           this.element.userList.update('add', user)
         }
         break;
-      case 'photo-changed':
-        const avatars = document.querySelectorAll(`[data-photo=avatar][data-user=${data.name}]`)
-        for (const avatar of avatars) {
-          avatar.style.backgroundImage = `url(/photos/${data.name}.png?t=${Date.now()})`
-        }
+      case 'photo-changed': 
+        const avatars = document.querySelectorAll(`.user-${data.name}`);
+        avatars.forEach((item) => {
+          item.src = `http://localhost:3000/photos/${data.name}.png`
+        })
+        break;
     }
   }
 } 

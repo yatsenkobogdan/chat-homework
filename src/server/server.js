@@ -16,13 +16,10 @@ function readBody(req) {
 const server = http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   try {
-    if (/\/photos\/.+\.png/.test(req.url)) {
-      
+      if (/\/photos\/.+\.png/.test(req.url)) {
       const [, imageName] = req.url.match(/\/photos\/(.+\.png)/) || [];
-      const fallBackPath = path.resolve(__dirname, 'public/images/blankAvatar.png');
-      console.log(fallBackPath)
-      const filePath = path.resolve(__dirname, '../photos', imageName);
-
+      const fallBackPath = path.resolve(__dirname, '../../public/images/blankAvatar.png');
+      const filePath = path.resolve(__dirname, '../../public/photos', imageName);
       if (fs.existsSync(filePath)) {
         return fs.createReadStream(filePath).pipe(res);
       } else {
@@ -32,7 +29,7 @@ const server = http.createServer(async (req, res) => {
       const body = await readBody(req);
       const name = body.name.replace(/\.\.\/|\//, '');
       const [, content] = body.image.match(/data:image\/.+?;base64,(.+)/) || [];
-      const filePath = path.resolve('./photos', `${name}.png`);
+      const filePath = path.resolve('./public/photos', `${name}.png`);
       if (name && content) {
         fs.writeFileSync(filePath, content, 'base64');
         broadcast(connections, { type: 'photo-changed', data: { name } });
@@ -40,7 +37,6 @@ const server = http.createServer(async (req, res) => {
         return res.end('fail');
       }
     }
-
     res.end('ok');
   } catch (e) {
     console.error(e);
